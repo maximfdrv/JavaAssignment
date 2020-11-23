@@ -46,49 +46,49 @@ class AppTest {
     @Test
     void TestExceptionIfArgsNotInts() throws Exception {
         String[] args = {"a"};
-        assertThrows(NumberFormatException.class, () -> App.PrintResults(args));
+        assertThrows(NumberFormatException.class, () -> App.PrintResultsAndStatistics(args));
     }
 
     @Test
-    void TestOutputIfNumsMultiplyOfFifteen() throws Exception {
-        String[] args = {"15"};
-        App.PrintResults(args);
-        assertEquals("fizzbuzz", outputStreamCaptor.toString().trim());
+    void TestOutputAndStatisticsForFizz() throws Exception {
+        String[] args = {"6"};
+        App.PrintResultsAndStatistics(args);
+        assertEquals(App.FIZZ + " " + "\r"+ "\n" + App.FIZZ + ": " + args.length, outputStreamCaptor.toString().trim());
     }
 
     @Test
-    void TestOutputIfNumsMultiplyOfFive() throws Exception {
+    void TestOutputAndStatisticsForBuzz() throws Exception {
         String[] args = {"5"};
-        App.PrintResults(args);
-        assertEquals("buzz", outputStreamCaptor.toString().trim());
+        App.PrintResultsAndStatistics(args);
+        assertEquals(App.BUZZ + " " + "\r"+ "\n" + App.BUZZ + ": " + args.length, outputStreamCaptor.toString().trim());
     }
 
     @Test
-    void TestOutputIfNumsMultiplyOfThree() throws Exception {
+    void TestOutputAndStatisticsForFizzbuzz() throws Exception {
+        String[] args = {"15"};
+        App.PrintResultsAndStatistics(args);
+        assertEquals(App.FIZZBUZZ + " " + "\r"+ "\n" + App.FIZZBUZZ + ": " + args.length, outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void TestOutputAndStatisticsForLucky() throws Exception {
         String[] args = {"3"};
-        App.PrintResults(args);
-        assertEquals("fizz", outputStreamCaptor.toString().trim());
+        App.PrintResultsAndStatistics(args);
+        assertEquals(App.LUCKY + " " + "\r"+ "\n" + App.LUCKY + ": " + args.length, outputStreamCaptor.toString().trim());
     }
 
     @Test
-    void TestOutputIfOutputIsDigit() throws Exception {
-        String[] args = {"2"};
-        App.PrintResults(args);
-        assertEquals("2", outputStreamCaptor.toString().trim());
+    void TestOutputAndStatisticsForInteger() throws Exception {
+        String[] args = {"1"};
+        App.PrintResultsAndStatistics(args);
+        assertEquals("1" + " " + "\r"+ "\n" + App.INTEGER + ": " + args.length, outputStreamCaptor.toString().trim());
     }
 
     @Test
-    void TestOutputIfOutputContainsThree() throws Exception {
-        String[] args = {"3"};
-        App.PrintResults(args);
-        assertEquals("lucky", outputStreamCaptor.toString().trim());
-    }
-
-    @Test
-    void TestOutputIfContainsThree() throws Exception {
-        String[] args = {"113"};
-        App.PrintResults(args);
-        assertEquals("lucky", outputStreamCaptor.toString().trim());
+    void TestOutputAndStatisticsForIntegers() throws Exception {
+        String[] args = {"1", "2"};
+        App.PrintResultsAndStatistics(args);
+        assertEquals("1 " + "2" + " " + "\r"+ "\n" + App.INTEGER + ": " + args.length, outputStreamCaptor.toString().trim());
     }
 
     @AfterEach
