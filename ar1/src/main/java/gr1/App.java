@@ -3,6 +3,14 @@ package gr1;
 
 public final class App {
 
+    static final String FIZZBUZZ = "fizzbuzz";
+    static final String BUZZ = "buzz";
+    static final String FIZZ = "fizz";
+    static final String LUCKY = "lucky";
+
+     /*
+        Method checked if args is null or empty, user will get a correct message
+    */
     public static  void IsArgsNullOrEmpty(String[] args) throws Exception {
         if (args == null || args.length == 0)
         {
@@ -11,6 +19,9 @@ public final class App {
         }
     }
 
+    /*
+        Method print out correct output
+    */
     public static void PrintResults(String[] args) {
 
         for (int i = 0; i < args.length; i++)
@@ -18,26 +29,33 @@ public final class App {
             int num = 0;
             try
             {
+                //parse string to int, will throw if string is not a digit
                 num = Integer.parseInt(args[i]);
             }
             catch (NumberFormatException e)
             {
+                //catch exception if input is not a digit, giving user correct message, rethrow exception
                 String output = String.format("Please provide numbers only. Input '%s' is not an digit! ", args[i]);
                 System.out.println(output);
                 throw e;
             }
 
+            //using mudulus for the output logic
             if (num % 15 == 0)
             {
-                System.out.print("fizzbuzz ");
+                System.out.print(FIZZBUZZ + " ");
+            }
+            else if (num % 10 == 3)
+            {
+                System.out.print(LUCKY + " ");
             }
             else if (num % 3 == 0)
             {
-                System.out.print("fizz ");
+                System.out.print(FIZZ + " ");
             }
             else if (num % 5 == 0)
             {
-                System.out.print("buzz ");
+                System.out.print(BUZZ + " ");
             }
             else
             {
@@ -46,6 +64,9 @@ public final class App {
         }
     }
 
+    /*
+        Main method.
+    */
     public static void main(String[] args) throws Exception {
         try
         {
@@ -53,6 +74,10 @@ public final class App {
             PrintResults(args);
         }
         catch (Exception e)
+        {
+            System.exit(1);
+        }
+        finally
         {
             System.exit(0);
         }

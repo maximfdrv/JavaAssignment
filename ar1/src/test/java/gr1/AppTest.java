@@ -64,17 +64,24 @@ class AppTest {
     }
 
     @Test
-    void TestOutputIfNumsMultiplyOfThree() throws Exception {
-        String[] args = {"3"};
-        App.PrintResults(args);
-        assertEquals("fizz", outputStreamCaptor.toString().trim());
-    }
-
-    @Test
     void TestOutputIfOutputIsDigit() throws Exception {
         String[] args = {"2"};
         App.PrintResults(args);
         assertEquals("2", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void TestOutputIfOutputContainsThree() throws Exception {
+        String[] args = {"3"};
+        App.PrintResults(args);
+        assertEquals("lucky", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void TestOutputIfContainsThree() throws Exception {
+        String[] args = {"113"};
+        App.PrintResults(args);
+        assertEquals("lucky", outputStreamCaptor.toString().trim());
     }
 
     @AfterEach
