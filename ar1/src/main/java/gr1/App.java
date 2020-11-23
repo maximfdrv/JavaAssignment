@@ -31,6 +31,10 @@ public final class App {
             {
                 System.out.print("fizzbuzz ");
             }
+            else if (num % 10 == 3)
+            {
+                System.out.print("lucky ");
+            }
             else if (num % 3 == 0)
             {
                 System.out.print("fizz ");
